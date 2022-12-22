@@ -266,10 +266,10 @@ export const ReactPageScroller = ({
 
   useEffect(() => {
     const instance = scrollContainer.current;
-    instance.addEventListener(Events.TOUCHMOVE, touchMove);
+    instance.addEventListener(Events.TOUCHMOVE, touchMove, {passive: true});
     instance.addEventListener(Events.KEYDOWN, keyPress);
     return () => {
-      instance.removeEventListener(Events.TOUCHMOVE, touchMove);
+      instance.removeEventListener(Events.TOUCHMOVE, touchMove, {passive: true});
       instance.removeEventListener(Events.KEYDOWN, keyPress);
     };
   }, [touchMove, keyPress]);
